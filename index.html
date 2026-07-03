@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rise Again — A Movement for Second Chances</title>
+<meta name="description" content="Rise Again empowers teenage mothers in Sierra Leone through education, skills training, leadership development, and advocacy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:    #C4862A;
+    --gold-lt: #F7EDD8;
+    --green:   #2D6A4F;
+    --green-lt:#D8EEE4;
+    --earth:   #8B4513;
+    --dark:    #1A1208;
+    --mid:     #4A3728;
+    --light:   #8A7060;
+    --cream:   #FBF7F0;
+    --white:   #FFFFFF;
+    --border:  #E8DDD0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ───────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(251,247,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ──────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    background: linear-gradient(135deg, #1A0E05 0%, #2D1A08 50%, #1A2D1F 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2.5rem 4rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(196,134,42,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(45,106,79,0.2) 0%, transparent 50%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 780px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(196,134,42,0.4);
+    padding: 0.35rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 3rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .hero-cta:hover { background: #A8721F; transform: translateY(-2px); }
+
+  .hero-cta-2 {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    color: rgba(255,255,255,0.75);
+    padding: 0.9rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    margin-left: 0.5rem;
+  }
+
+  .hero-cta-2:hover { color: var(--gold); }
+
+  .hero-quote {
+    position: absolute;
+    right: 5%; top: 50%; transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    font-style: italic;
+    color: rgba(196,134,42,0.35);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.1em;
+    display: none;
+  }
+
+  @media (min-width: 900px) { .hero-quote { display: block; } }
+
+  /* ── STATS BAR ─────────────────────────────────────────── */
+  .stats-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SECTIONS ──────────────────────────────────────────── */
+  section { padding: 5rem 2.5rem; }
+
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    color: var(--mid);
+    max-width: 620px;
+    line-height: 1.8;
+  }
+
+  /* ── STORY ─────────────────────────────────────────────── */
+  .story-section {
+    background: var(--white);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 720px) { .story-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .story-accent {
+    background: linear-gradient(135deg, var(--gold-lt), #FFF8EE);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 1rem 1rem 0;
+    padding: 2rem;
+  }
+
+  .story-accent blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--earth);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .story-accent cite {
+    font-size: 0.85rem;
+    color: var(--light);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── PROBLEM ───────────────────────────────────────────── */
+  .problem-section {
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  .problem-section .section-title { color: var(--white); }
+  .problem-section .section-body { color: rgba(255,255,255,0.7); max-width: 100%; }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .problem-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .problem-card:hover { background: rgba(196,134,42,0.1); border-color: rgba(196,134,42,0.3); }
+
+  .problem-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .problem-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .problem-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── PILLARS ───────────────────────────────────────────── */
+  .pillars-section { background: var(--cream); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-lt);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-body {
+    font-size: 0.9rem;
+    color: var(--light);
+    line-height: 1.7;
+  }
+
+  .pillar-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: var(--green-lt);
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+  }
+
+  /* ── FOUNDER ───────────────────────────────────────────── */
+  .founder-section {
+    background: var(--white);
+  }
+
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 720px) { .founder-grid { grid-template-columns: 1fr; } }
+
+  .founder-card {
+    background: linear-gradient(135deg, var(--gold-lt), #FFFBF4);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .founder-initials {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+  }
+
+  .founder-role {
+    font-size: 0.85rem;
+    color: var(--light);
+    margin-bottom: 1.5rem;
+  }
+
+  .founder-badges {
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+
+  .badge {
+    font-size: 0.8rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--mid);
+    text-align: left;
+  }
+
+  .founder-text p {
+    font-size: 1rem;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  /* ── VISION ────────────────────────────────────────────── */
+  .vision-section {
+    background: linear-gradient(135deg, var(--green) 0%, #1A4030 100%);
+    text-align: center;
+  }
+
+  .vision-section .section-tag { color: rgba(255,255,255,0.6); }
+  .vision-section .section-title { color: var(--white); max-width: 700px; margin: 0 auto 1.5rem; }
+  .vision-section .section-body { color: rgba(255,255,255,0.75); margin: 0 auto 3rem; text-align: center; }
+
+  .values-row {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    justify-content: center; margin-top: 2rem;
+  }
+
+  .value-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    padding: 0.4rem 1.1rem;
+    border-radius: 2rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── CONTACT ───────────────────────────────────────────── */
+  .contact-section { background: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-form {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 2rem;
+  }
+
+  .form-group { margin-bottom: 1.25rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--light);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--gold); }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    border-radius: 3rem;
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .form-submit:hover { background: #A8721F; transform: translateY(-1px); }
+
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--mid);
+  }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    background: var(--gold-lt);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .privacy-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--green-lt);
+    border-radius: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--green);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ────────────────────────────────────────────── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem 2.5rem;
+    font-size: 0.85rem;
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* ── FORM HANDLER ──────────────────────────────────────── */
+  .success-msg {
+    display: none;
+    background: var(--green-lt);
+    border: 1px solid var(--green);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    color: var(--green);
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Rise Again</a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#pillars">What We Do</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#contact">Get Involved</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Sierra Leone · A Movement for Second Chances</div>
+    <h1>Every girl deserves<br>to <em>Rise Again.</em></h1>
+    <p class="hero-sub">
+      We empower teenage mothers in Sierra Leone through education, skills training,
+      leadership development, and advocacy — because becoming a mother should never
+      mean the end of your future.
+    </p>
+    <div>
+      <a href="#contact" class="hero-cta">Get Involved →</a>
+      <a href="#story" class="hero-cta-2">Our Story ↓</a>
+    </div>
+  </div>
+  <div class="hero-quote">Rise · Learn · Lead</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">1 in 4</div>
+    <div class="stat-label">Girls in Sierra Leone pregnant by age 18</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">60%</div>
+    <div class="stat-label">Teenage mothers drop out of school</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">443</div>
+    <div class="stat-label">Maternal deaths per 100,000 births</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Of these girls deserve a second chance</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="container">
+    <div class="section-tag">Our Story</div>
+    <h2 class="section-title">Born from lived experience.<br>Built with purpose.</h2>
+    <div class="story-grid">
+      <div>
+        <p class="section-body">
+          Rise Again was founded by Josephine Duba Kanu, a Sierra Leonean youth advocate
+          who grew up in Kalangba Town, Bombali District. Growing up, Josephine witnessed
+          many young girls whose dreams ended the moment they became mothers — not because
+          of their circumstances, but because of how the world responded to those circumstances.
+        </p>
+        <br>
+        <p class="section-body">
+          Instead of support, these girls faced stigma, rejection, and isolation.
+          Instead of opportunity, they faced closed doors. Rise Again exists to open those
+          doors back up — through education, skills, mentorship, and advocacy.
+        </p>
+        <br>
+        <p class="section-body">
+          Inspired by the Girls in Diplomacy Fellowship and grounded in community experience,
+          Rise Again is not a charity. It is a movement — built on the belief that dignity,
+          opportunity, and leadership belong to every young woman, regardless of her story.
+        </p>
+      </div>
+      <div class="story-accent">
+        <blockquote>
+          "Becoming a teenage mother should never mean the end of someone's future.
+          Everyone deserves a second chance. That belief gave birth to Rise Again."
+        </blockquote>
+        <cite>— Josephine Duba Kanu, Founder</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="section-tag">The Problem</div>
+    <h2 class="section-title">The barriers teenage mothers face</h2>
+    <p class="section-body">
+      In Sierra Leone, teenage mothers face compounding challenges that trap them
+      in cycles of poverty and exclusion. Rise Again addresses each one.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>Dropping out of school</h4>
+        <p>Most teenage mothers are forced to leave school — losing their education and their future opportunities.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Stigma and rejection</h4>
+        <p>Communities, families, and institutions often respond with judgment rather than support.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Financial hardship</h4>
+        <p>Without education or skills, young mothers have few paths to financial independence.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Mental health struggles</h4>
+        <p>Isolation, shame, and lack of support take a severe toll on young mothers' wellbeing.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Closed doors</h4>
+        <p>Leadership, decision-making, and opportunity spaces remain largely inaccessible to young mothers.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Policy gaps</h4>
+        <p>Policies that should protect young mothers are absent, weak, or unenforced across Sierra Leone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section" id="pillars">
+  <div class="container">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Five pillars of empowerment</h2>
+    <p class="section-body">
+      Rise Again takes a holistic approach — because one intervention alone is not enough
+      to break cycles that run this deep.
+    </p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Education Support</div>
+        <p class="pillar-body">
+          We advocate for re-enrollment of teenage mothers in schools, connect girls with
+          scholarships and learning opportunities, and promote flexible education pathways
+          that work around the realities of young motherhood.
+        </p>
+        <span class="pillar-tag">Back to school</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Skills Development</div>
+        <p class="pillar-body">
+          Vocational training in tailoring, hairdressing, ICT and digital skills,
+          entrepreneurship, agriculture, and small business management — building
+          pathways to financial independence.
+        </p>
+        <span class="pillar-tag">Economic freedom</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Leadership Development</div>
+        <p class="pillar-body">
+          Training teenage mothers to become community leaders, youth advocates,
+          public speakers, peace ambassadors, and mentors for other young women.
+        </p>
+        <span class="pillar-tag">Lead the way</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Mental Health & Wellbeing</div>
+        <p class="pillar-body">
+          Counselling, peer support groups, confidence-building workshops, and
+          emotional healing spaces — because healing is not optional, it is foundational.
+        </p>
+        <span class="pillar-tag">Heal and grow</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <div class="pillar-title">Policy Advocacy</div>
+        <p class="pillar-body">
+          Working with schools, communities, government institutions, NGOs, and
+          international organisations to promote policies that protect teenage mothers
+          and reduce stigma across Sierra Leone and beyond.
+        </p>
+        <span class="pillar-tag">Systemic change</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision-section">
+  <div class="container">
+    <div class="section-tag">Our Vision</div>
+    <h2 class="section-title">
+      A Sierra Leone where every teenage mother has the opportunity to rebuild her life.
+    </h2>
+    <p class="section-body">
+      Rise Again is more than a project — it is a movement. We are working toward a future
+      where no young woman is defined by her circumstances, but empowered by her potential.
+    </p>
+    <div class="values-row">
+      <span class="value-pill">Hope</span>
+      <span class="value-pill">Dignity</span>
+      <span class="value-pill">Inclusion</span>
+      <span class="value-pill">Equality</span>
+      <span class="value-pill">Compassion</span>
+      <span class="value-pill">Leadership</span>
+      <span class="value-pill">Empowerment</span>
+      <span class="value-pill">Education</span>
+      <span class="value-pill">Resilience</span>
+      <span class="value-pill">Justice</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-section" id="founder">
+  <div class="container">
+    <div class="section-tag">About the Founder</div>
+    <h2 class="section-title">Built from the inside out.</h2>
+    <div class="founder-grid">
+      <div class="founder-card">
+        <div class="founder-initials">JDK</div>
+        <div class="founder-name">Josephine Duba Kanu</div>
+        <div class="founder-role">Founder · Youth Advocate · Software Engineer</div>
+        <div class="founder-badges">
+          <div class="badge">🇸🇱 From Kalangba Town, Bombali District, Sierra Leone</div>
+          <div class="badge">🌍 UN Millennium Fellow 2025</div>
+          <div class="badge">🎓 B.Sc. Software Engineering, African Leadership University</div>
+          <div class="badge">🕊 Girls in Diplomacy Fellow, Class of 2026</div>
+          <div class="badge">🏥 Founder, SAFEBIRTH Sierra Leone</div>
+        </div>
+      </div>
+      <div class="founder-text">
+        <p>
+          Josephine Duba Kanu is a Sierra Leonean youth advocate, software engineer,
+          and social entrepreneur currently studying at African Leadership University
+          in Kigali, Rwanda. She grew up in Kalangba Town, Bombali District —
+          a rural community where she witnessed firsthand the consequences of inequality
+          for women and girls.
+        </p>
+        <p>
+          As a UN Millennium Fellow, she conducted research on maternal health challenges
+          in rural Sierra Leone and built SAFEBIRTH Sierra Leone — an AI-powered maternal
+          health early warning system. Her Girls in Diplomacy Fellowship deepened her
+          understanding of human rights, feminist foreign policy, and how to design
+          systemic change rather than temporary relief.
+        </p>
+        <p>
+          Rise Again brings together both passions: technology and humanity. It is
+          Josephine's commitment that no girl in Sierra Leone should lose her future
+          because the world responded to her circumstances with judgment instead of support.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-tag">Get Involved</div>
+    <h2 class="section-title">Join the movement.</h2>
+    <p class="section-body">
+      Whether you are a donor, mentor, partner organisation, or someone who wants to
+      support teenage mothers in Sierra Leone — we would love to hear from you.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>How would you like to help?</label>
+            <select>
+              <option value="">Select one</option>
+              <option>Donate to Rise Again</option>
+              <option>Become a mentor</option>
+              <option>Partner with us</option>
+              <option>Volunteer</option>
+              <option>Media or press inquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Message</label>
+            <textarea placeholder="Tell us about yourself and how you would like to support Rise Again..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <div class="success-msg" id="successMsg">
+            ✓ Thank you for reaching out! Josephine will be in touch with you soon.
+          </div>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Let's build this together.</h3>
+        <p>
+          Rise Again is in its early stages and growing. We are actively seeking
+          mentors, donors, partners, and advocates who believe that every young woman
+          in Sierra Leone deserves a second chance.
+        </p>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <span>j.kanu@alustudent.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <span>josephinedubakanu@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span>Based in Kigali, Rwanda · Working across Sierra Leone</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <span>github.com/DubaKanu</span>
+        </div>
+        <div class="privacy-note">
+          🔒 <strong>Your privacy matters.</strong> Any information you share through
+          this form is used only to respond to your message. We do not sell, share,
+          or distribute your contact details to any third party. Ever.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>Rise Again</strong> — A Movement for Second Chances &nbsp;·&nbsp;
+    Founded by Josephine Duba Kanu &nbsp;·&nbsp;
+    Sierra Leone &nbsp;·&nbsp;
+    <a href="mailto:j.kanu@alustudent.com" style="color: var(--gold); text-decoration:none;">j.kanu@alustudent.com</a>
+  </p>
+  <p style="margin-top:0.5rem; font-size:0.75rem;">
+    © 2026 Rise Again. Built with purpose.
+  </p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('successMsg').style.display = 'block';
+  e.target.reset();
+  setTimeout(() => {
+    document.getElementById('successMsg').style.display = 'none';
+  }, 6000);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
