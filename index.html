@@ -864,22 +864,19 @@
       support teenage mothers in Sierra Leone  we would love to hear from you.
     </p>
     <div class="contact-grid">
-      <div class="contact-form">
-        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="access_key" value="1ec8972e-f13c-4479-8520-bdb44b890c52">
-          <input type="hidden" name="subject" value="New message from Rise Again website">
-          <input type="hidden" name="from_name" value="Rise Again Website">
+            <div class="contact-form">
+        <form id="contactForm" onsubmit="handleMailto(event)">
           <div class="form-group">
             <label>Your Name</label>
-            <input type="text" name="name" placeholder="Full name" required>
+            <input type="text" id="senderName" placeholder="Full name" required>
           </div>
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" name="email" placeholder="your@email.com" required>
+            <input type="email" id="senderEmail" placeholder="your@email.com" required>
           </div>
           <div class="form-group">
             <label>How would you like to help?</label>
-            <select name="how_to_help">
+            <select id="howToHelp">
               <option value="">Select one</option>
               <option>Donate to Rise Again</option>
               <option>Become a mentor</option>
@@ -891,38 +888,14 @@
           </div>
           <div class="form-group">
             <label>Your Message</label>
-            <textarea name="message" placeholder="Tell us about yourself and how you would like to support Rise Again..."></textarea>
+            <textarea id="senderMessage" placeholder="Tell us about yourself and how you would like to support Rise Again..."></textarea>
           </div>
-          <button type="submit" class="form-submit">Send Message </button>
+          <button type="submit" class="form-submit">Send Message</button>
           <div class="success-msg" id="successMsg">
-             Thank you for reaching out! Josephine will be in touch with you soon.
+            Thank you! Your email app will open now. Please click Send to complete your message to Josephine.
           </div>
         </form>
       </div>
-      <div class="contact-info">
-        <h3>Let's build this together.</h3>
-        <p>
-          Rise Again is in its early stages and growing. We are actively seeking
-          mentors, donors, partners, and advocates who believe that every young woman
-          in Sierra Leone deserves a second chance.
-        </p>
-        <div class="contact-item">
-          <span>j.kanu@alustudent.com</span>
-        </div>
-        <div class="contact-item">
-          <span>josephinedubakanu@gmail.com</span>
-        </div>
-        <div class="contact-item">
-          <span>Based in Kigali, Rwanda  Working across Sierra Leone</span>
-        </div>
-        <div class="contact-item">
-          <span>github.com/DubaKanu</span>
-        </div>
-        <div class="privacy-note">
-           <strong>Your privacy matters.</strong> Any information you share through
-          this form is used only to respond to your message. We do not sell, share,
-          or distribute your contact details to any third party. Ever.
-        </div>
       </div>
     </div>
   </div>
@@ -942,11 +915,24 @@
 </footer>
 
 <script>
-function handleSubmit(e) {
+function handleMailto(e) {
   e.preventDefault();
+  var name = document.getElementById('senderName').value;
+  var email = document.getElementById('senderEmail').value;
+  var how = document.getElementById('howToHelp').value;
+  var message = document.getElementById('senderMessage').value;
+  var subject = encodeURIComponent('Rise Again - ' + how);
+  var body = encodeURIComponent('Name: ' + name + '
+Email: ' + email + '
+How I want to help: ' + how + '
+
+Message:
+' + message);
   document.getElementById('successMsg').style.display = 'block';
-  e.target.reset();
-  setTimeout(() => {
+  setTimeout(function() {
+    window.location.href = 'mailto:josephinedubakanu@gmail.com?subject=' + subject + '&body=' + body;
+  }, 500);
+  setTimeout(function() {
     document.getElementById('successMsg').style.display = 'none';
   }, 6000);
 }
